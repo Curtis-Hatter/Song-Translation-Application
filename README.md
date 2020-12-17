@@ -1,5 +1,6 @@
-# CovidnChill
-### A collaborative project, now with real direction, *_and_* good vibes.
+# Song Translation Application
+### This is the repository for Project 1.
+#### Group members: Curtis, Mark, Megan, Michaela & Tyler
 
 ## Overview
 #### This Song Translation Application will utilize API's in order to provide the user with a fun and informative musical experience. The user experience within the browser will be enhanced by stylish CSS (powered by [Bulma](https://bulma.io/)), a user friendly HTML layout, and Javascript to dynamically update these elements. The decumentation of each API can be found using the links below:
