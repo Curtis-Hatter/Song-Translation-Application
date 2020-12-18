@@ -1,13 +1,12 @@
-var userinput = prompt("enter song");
-var url = "https://api.musixmatch.com/ws/1.1/track.search?q_track="+userinput+"&page_size=1&page=1&s_track_rating=desc&apikey=e6524e95459dac73ce4a95bde9428b70";
-var corsfix = "https://cors-anywhere.herokuapp.com/";
-var fullurl=corsfix+url;
 
 
-console.log(url);
-console.log(fullurl);
+$("#song-btn").on('click',function(){
+    var userinput = JSON.stringify($('#song-user-input').val());
+    var url = "https://api.musixmatch.com/ws/1.1/track.search?q_track="+userinput+"&page_size=1&page=1&s_track_rating=desc&apikey=e6524e95459dac73ce4a95bde9428b70";
+    var corsfix = "https://cors-anywhere.herokuapp.com/";
+    var fullurl=corsfix+url;
 
-
+    console.log(userinput);
 $.ajax({
     url: fullurl,
     type: 'GET'
@@ -36,11 +35,12 @@ $.ajax({
 
         console.log(lyrics);
     
-    
+        $("#retrieved-lyrics").text(lyrics)
     
     
     });
 
+});
 });
 
 
