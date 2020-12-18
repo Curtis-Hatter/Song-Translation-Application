@@ -4,12 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CovidnChill</title>
+    <title>Song Translation Application</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1 class="text-here"></h1>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <section class="section">
+        <div class="container">
+            <h1>Lyric Translator</h1>
+            <div class="field">
+                <h2>Enter a Song:</h2>
+                <div class="control">
+                    <input id="song-user-input" class="input is-primary" type="text" placeholder="Song goes here!">
+                    <button class="button is-primary">Submit</button>
+                </div>
+            </div>
+            <div>
+                <h1>Lyrics go here:</h2>
+                    <p id="retrieved-lyrics"> </p>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="script.js"></script>
 </body>
 
