@@ -4,7 +4,7 @@ body {
 }
 
 h1 {
-    font-size: 28px;
+    font-size: 32px;
 }
 
 h2 {
@@ -14,4 +14,28 @@ h2 {
 .button-font {
     font-family: 'Oswald', sans-serif;
     font-size: 20px;
+}
+
+.column-tall {
+    height: 320px; 
+}
+
+@media only screen and (max-width: 768px) {
+    .column-tall {
+        height: 100px;
+    }
+    body {
+        font-family: 'Oswald', sans-serif;
+        font-size: 18px;
+        text-align: center;
+    }
+    .centered {
+        margin-left: 220px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .centered {
+        margin-left: 85px;
+    }
 }
