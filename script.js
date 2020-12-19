@@ -16,6 +16,8 @@ $("#song-button").on('click', function () {
         var trackcheck = idobject.message.body.track_list[0].track;
         var trackid = idobject.message.body.track_list[0].track.track_id;
         $("#song-button").removeClass("is-loading")
+        $("#lyric-box-1").removeClass("column-tall")
+        $("#placeholder-box").removeClass("column-tall")
 
         console.log(trackid);
 
@@ -50,12 +52,8 @@ $("#song-button").on('click', function () {
 $("#pirate-translate").on("click", function () {
     // var text = "Hello sir, my mother goes with me to the ocean.";
     var queryURL = "https://api.funtranslations.com/translate/pirate.json?text=" + text;
-<<<<<<< HEAD
-    console.log(queryURL);
-=======
 
 //     console.log(queryURL);
->>>>>>> bea7457ceb8f6000024d5a33ea0a7e2bb07b7af2
     $("#pirate-translate").addClass("is-loading")
     $.ajax({
         headers: { 'X-FunTranslations-Api-Secret': 'Ta_kah9NbJ1OJsOMUdhyBQeF' },
@@ -64,6 +62,7 @@ $("#pirate-translate").on("click", function () {
     }).then(function (response) {
         // console.log(response);
         $("#pirate-translate").removeClass("is-loading")
+        $("#lyric-box-2").removeClass("column-tall")
         $("#retrieved-translation").text(JSON.stringify(response.contents.translated));
     })
 })
@@ -79,6 +78,7 @@ $("#yoda-translate").on("click", function () {
     }).then(function (response) {
         // console.log(response);
         $("#yoda-translate").removeClass("is-loading")
+        $("#lyric-box-2").removeClass("column-tall")
         $("#retrieved-translation").text(JSON.stringify(response.contents.translated));
     })
 })
@@ -94,11 +94,13 @@ $("#hodor-translate").on("click", function () {
     }).then(function (response) {
         // console.log(response);
         $("#hodor-translate").removeClass("is-loading")
+        $("#lyric-box-2").removeClass("column-tall")
         $("#retrieved-translation").text(JSON.stringify(response.contents.translated));
     })
 })
 
 $("#groot-translate").on("click", function () {
+    $("#lyric-box-2").removeClass("column-tall")
     $("#retrieved-translation").text("I am groot!");
 })
 

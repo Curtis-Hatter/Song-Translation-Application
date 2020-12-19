@@ -17,10 +17,10 @@
             <h1 class = "ml-2 mb-2">Lyric Translator</h1>
                 <div class="field has-addons mb-2">
                     <div class="control centered">
-                        <input class="input is-medium" type="text" placeholder="Enter a Song">
+                        <input id = "song-user-input" class="input is-medium" type="text" placeholder="Enter a Song">
                     </div>
                     <div class="control">
-                        <a class="button has-background-grey-light is-medium"><i class="fas fa-search"></i></a>
+                        <a class="button has-background-grey-light is-medium" id = "song-button"><i class="fas fa-search"></i></a>
                     </div>
                 </div>
             </div>
@@ -30,9 +30,9 @@
         <div class ="column is-two-fifths">
             <div class = "box">
                 <h2>Original Lyrics:</h2>
-                    <div class ="box mt-3 column-tall">
-                        <p id ="retrieved-lyrics" class = "p-6"> </p>
-                    </div>
+                <div id = "lyric-box-1" class ="box mt-3 column-tall">
+                    <p id ="retrieved-lyrics" class = "p-1"> </p>
+                </div>
             </div>
         </div>
         <div class = "column is-one-fifth">
@@ -57,13 +57,13 @@
         <div class ="column is-two-fifths">
             <div class = "box">
                 <h2>Translated Lyrics:</h2>
-                    <div class ="box mt-3 column-tall">
-                        <p id = "retrieved-translation" class = "p-2"> </p>
+                    <div id = "lyric-box-2" class ="box mt-3 column-tall">
+                        <p id = "retrieved-translation" class = "p-1"> </p>
                     </div>
             </div>
         </div>
     </div>
-    <div class = "columns column-tall">
+    <div id = "placeholder-box" class = "columns column-tall">
 
     </div>
     <footer class=“footer”>
