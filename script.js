@@ -13,8 +13,9 @@ $.ajax({
 }).then(function(response){
     var idobject = JSON.parse(""+response+"");
     console.log(idobject);
-
+    var trackcheck = idobject.message.body.track_list[0].track
     var trackid = idobject.message.body.track_list[0].track.track_id;
+    
 
     console.log(trackid);
 
@@ -39,6 +40,7 @@ $.ajax({
     
     
     });
+
 
 });
 });
