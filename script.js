@@ -50,7 +50,12 @@ $("#song-button").on('click', function () {
 $("#pirate-translate").on("click", function () {
     // var text = "Hello sir, my mother goes with me to the ocean.";
     var queryURL = "https://api.funtranslations.com/translate/pirate.json?text=" + text;
+<<<<<<< HEAD
     console.log(queryURL);
+=======
+
+//     console.log(queryURL);
+>>>>>>> bea7457ceb8f6000024d5a33ea0a7e2bb07b7af2
     $("#pirate-translate").addClass("is-loading")
     $.ajax({
         headers: { 'X-FunTranslations-Api-Secret': 'Ta_kah9NbJ1OJsOMUdhyBQeF' },
@@ -94,18 +99,7 @@ $("#hodor-translate").on("click", function () {
 })
 
 $("#groot-translate").on("click", function () {
-    // var text = "Hello sir, my mother goes with me to the ocean.";
-    var queryURL = "https://api.funtranslations.com/translate/groot.json?text=" + text;
-    $("#groot-translate").addClass("is-loading")
-    $.ajax({
-        // headers: { 'X-FunTranslations-Api-Secret': 'Ta_kah9NbJ1OJsOMUdhyBQeF' },
-        url: queryURL,
-        method: "GET"
-    }).then(function (response) {
-        // console.log(response);
-        $("#groot-translate").removeClass("is-loading")
-        $("#retrieved-translation").text(JSON.stringify(response.contents.translated));
-    })
+    $("#retrieved-translation").text("I am groot!");
 })
 
 
