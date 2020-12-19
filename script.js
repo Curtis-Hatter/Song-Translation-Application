@@ -5,23 +5,23 @@ $("#song-button").on('click', function () {
     var corsfix = "https://cors-anywhere.herokuapp.com/";
     var fullurl = corsfix + url;
 
-    console.log(userinput);
+    // console.log(userinput);
     $.ajax({
         url: fullurl,
         type: 'GET'
     }).then(function (response) {
         var idobject = JSON.parse("" + response + "");
-        console.log(idobject);
+        // console.log(idobject);
         var trackcheck = idobject.message.body.track_list[0].track;
         var trackid = idobject.message.body.track_list[0].track.track_id;
 
 
-        console.log(trackid);
+        // console.log(trackid);
 
         var lyricurl = "https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=" + trackid + "&apikey=e6524e95459dac73ce4a95bde9428b70";
 
         var fulllyricurl = corsfix + lyricurl;
-        console.log(fulllyricurl);
+        // console.log(fulllyricurl);
 
 
         $.ajax({
@@ -29,7 +29,7 @@ $("#song-button").on('click', function () {
             type: 'GET'
         }).then(function (response) {
             var lyricobject = JSON.parse("" + response + "");
-            console.log(lyricobject);
+            // console.log(lyricobject);
 
             var lyrics = lyricobject.message.body.lyrics.lyrics_body;
 
@@ -49,7 +49,7 @@ $("#song-button").on('click', function () {
 $("#pirate-translate").on("click", function () {
     // var text = "Hello sir, my mother goes with me to the ocean.";
     var queryURL = "https://api.funtranslations.com/translate/pirate.json?text=" + text;
-    console.log(queryURL);
+    // console.log(queryURL);
     $.ajax({
         headers: { 'X-FunTranslations-Api-Secret': 'Ta_kah9NbJ1OJsOMUdhyBQeF' },
         url: queryURL,
@@ -88,15 +88,7 @@ $("#hodor-translate").on("click", function () {
 
 $("#groot-translate").on("click", function () {
     // var text = "Hello sir, my mother goes with me to the ocean.";
-    var queryURL = "https://api.funtranslations.com/translate/groot.json?text=" + text;
-    $.ajax({
-        // headers: { 'X-FunTranslations-Api-Secret': 'Ta_kah9NbJ1OJsOMUdhyBQeF' },
-        url: queryURL,
-        method: "GET"
-    }).then(function (response) {
-        // console.log(response);
-        $("#retrieved-translation").text(JSON.stringify(response.contents.translated));
-    })
+    $("#retrieved-translation").text("I am groot!");
 })
 
 
