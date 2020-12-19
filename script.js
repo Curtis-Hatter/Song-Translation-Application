@@ -91,5 +91,15 @@ $("#groot-translate").on("click", function () {
     $("#retrieved-translation").text("I am groot!");
 })
 
-
+$("#groot-translate").hover(function () {
+    // element.clear();
+    $("#groot-img").attr('src', "./assets/groot.icon.white.png");
+})
+$("#groot-translate").mouseleave(function () {
+    // element.clear();
+    $("#groot-img").attr('src', "./assets/groot.icon.png");
+})
+// function unhover(element) {
+//     element.setAttribute('src', './assets/groot.icon.png');
+// }
 
