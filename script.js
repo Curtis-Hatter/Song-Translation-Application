@@ -6,23 +6,25 @@ $("#song-button").on('click', function () {
     var fullurl = corsfix + url;
     $("#song-button").addClass("is-loading")
 
-    // console.log(userinput);
+    console.log(userinput);
     $.ajax({
         url: fullurl,
         type: 'GET'
     }).then(function (response) {
         var idobject = JSON.parse("" + response + "");
-        // console.log(idobject);
+        console.log(idobject);
         var trackcheck = idobject.message.body.track_list[0].track;
         var trackid = idobject.message.body.track_list[0].track.track_id;
         $("#song-button").removeClass("is-loading")
+        $("#lyric-box-1").removeClass("column-tall")
+        $("#placeholder-box").removeClass("column-tall")
 
-        // console.log(trackid);
+        console.log(trackid);
 
         var lyricurl = "https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=" + trackid + "&apikey=e6524e95459dac73ce4a95bde9428b70";
 
         var fulllyricurl = corsfix + lyricurl;
-        // console.log(fulllyricurl);
+        console.log(fulllyricurl);
 
 
         $.ajax({
@@ -30,7 +32,7 @@ $("#song-button").on('click', function () {
             type: 'GET'
         }).then(function (response) {
             var lyricobject = JSON.parse("" + response + "");
-            // console.log(lyricobject);
+            console.log(lyricobject);
 
             var lyrics = lyricobject.message.body.lyrics.lyrics_body;
 
@@ -60,6 +62,7 @@ $("#pirate-translate").on("click", function () {
     }).then(function (response) {
         // console.log(response);
         $("#pirate-translate").removeClass("is-loading")
+        $("#lyric-box-2").removeClass("column-tall")
         $("#retrieved-translation").text(JSON.stringify(response.contents.translated));
     })
 })
@@ -75,6 +78,7 @@ $("#yoda-translate").on("click", function () {
     }).then(function (response) {
         // console.log(response);
         $("#yoda-translate").removeClass("is-loading")
+        $("#lyric-box-2").removeClass("column-tall")
         $("#retrieved-translation").text(JSON.stringify(response.contents.translated));
     })
 })
@@ -90,11 +94,13 @@ $("#hodor-translate").on("click", function () {
     }).then(function (response) {
         // console.log(response);
         $("#hodor-translate").removeClass("is-loading")
+        $("#lyric-box-2").removeClass("column-tall")
         $("#retrieved-translation").text(JSON.stringify(response.contents.translated));
     })
 })
 
-$("#groot-translate").on("click", function () 
+$("#groot-translate").on("click", function () {
+    $("#lyric-box-2").removeClass("column-tall")
     $("#retrieved-translation").text("I am groot!");
 })
 
