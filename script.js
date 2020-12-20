@@ -53,7 +53,7 @@ $("#pirate-translate").on("click", function () {
     // var text = "Hello sir, my mother goes with me to the ocean.";
     var queryURL = "https://api.funtranslations.com/translate/pirate.json?text=" + text;
 
-//     console.log(queryURL);
+    //     console.log(queryURL);
     $("#pirate-translate").addClass("is-loading")
     $.ajax({
         headers: { 'X-FunTranslations-Api-Secret': 'Ta_kah9NbJ1OJsOMUdhyBQeF' },
@@ -104,5 +104,38 @@ $("#groot-translate").on("click", function () {
     $("#retrieved-translation").text("I am groot!");
 })
 
+$("#groot-translate").hover(function () {
+    // element.clear();
+    $("#groot-img").attr('src', "./assets/groot.icon.white.png");
+})
+$("#groot-translate").mouseleave(function () {
+    // element.clear();
+    $("#groot-img").attr('src', "./assets/groot.icon.png");
+})
 
+$("#yoda-translate").hover(function () {
+    // element.clear();
+    $("#yoda-img").attr('src', "./assets/yoda.icon.white.png");
+})
+$("#yoda-translate").mouseleave(function () {
+    // element.clear();
+    $("#yoda-img").attr('src', "./assets/yoda.icon.png");
+})
 
+$("#pirate-translate").hover(function () {
+    // element.clear();
+    $("#pirate-img").attr('src', "./assets/pirate.icon.white.png");
+})
+$("#pirate-translate").mouseleave(function () {
+    // element.clear();
+    $("#pirate-img").attr('src', "./assets/pirate.icon.png");
+})
+
+$("#hodor-translate").hover(function () {
+    // element.clear();
+    $("#hodor-img").attr('src', "./assets/hodor.icon.white.png");
+})
+$("#hodor-translate").mouseleave(function () {
+    // element.clear();
+    $("#hodor-img").attr('src', "./assets/hodor.icon.png");
+})

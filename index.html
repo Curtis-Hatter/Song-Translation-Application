@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Song Translation Application</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" <link rel="preconnect"
+        href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
@@ -12,59 +14,64 @@
 </head>
 
 <body>
-    <div class = "hero is-dark">
+    <div class="hero is-dark">
         <div class="has-text-white p-3 m-3 level">
-            <h1 class = "ml-2 mb-2">Lyric Translator</h1>
-                <div class="field has-addons mb-2">
-                    <div class="control centered">
-                        <input id = "song-user-input" class="input is-medium" type="text" placeholder="Enter a Song">
-                    </div>
-                    <div class="control">
-                        <a class="button has-background-grey-light is-medium" id = "song-button"><i class="fas fa-search"></i></a>
-                    </div>
+            <h1 class="ml-2 mb-2">Lyric Translator</h1>
+            <div class="field has-addons mb-2">
+                <div class="control centered">
+                    <input id="song-user-input" class="input is-medium" type="text" placeholder="Enter a Song">
+                </div>
+                <div class="control">
+                    <a class="button has-background-grey-light is-medium" id="song-button"><i
+                            class="fas fa-search"></i></a>
                 </div>
             </div>
         </div>
     </div>
-    <div class ="columns p-2 m-2 mb-6">
-        <div class ="column is-two-fifths">
-            <div class = "box">
+    </div>
+    <div class="columns p-2 m-2 mb-6">
+        <div class="column is-two-fifths">
+            <div class="box">
                 <h2>Original Lyrics:</h2>
-                <div id = "lyric-box-1" class ="box mt-3 column-tall">
-                    <p id ="retrieved-lyrics" class = "p-1"> </p>
+                <div id="lyric-box-1" class="box mt-3 column-tall">
+                    <p id="retrieved-lyrics" class="p-1"> </p>
                 </div>
             </div>
         </div>
-        <div class = "column is-one-fifth">
-            <div class = "box has-text-centered">
-                <h2 class = "mb-4">Choose a Translation Language:</h2>
-                    <div class = "rows">
-                        <div class = "row is-full">
-                            <button id = "pirate-translate" class="button is-link is-outlined button-font mb-2">Pirate</button>
-                        </div>
-                        <div class = "row is-full">
-                            <button id = "yoda-translate" class="button is-success is-outlined button-font mb-2">Yoda</button>
-                        </div>
-                        <div class = "row is-full">
-                            <button id = "groot-translate" class="button is-danger is-outlined button-font mb-2">Groot</button>
-                        </div>
-                        <div class = "row is-full">
-                            <button id = "hodor-translate" class="button is-info is-outlined button-font mb-2">Hodor</button>
-                        </div>
+        <div class="column is-one-fifth">
+            <div class="box has-text-centered">
+                <h2 class="mb-4">Choose a Translation Language:</h2>
+                <div class="rows">
+                    <div class="row is-full">
+                        <button id="pirate-translate" class="button is-link is-outlined button-font"><img
+                                id="pirate-img" src="./assets/pirate.icon.png" alt="Pirate Ship"></button>
+                    </div>
+                    <div class="row is-full">
+                        <button id="yoda-translate" class="button is-success is-outlined button-font"><img id="yoda-img"
+                                src="./assets/yoda.icon.png" alt="Yoda from Star Wars"></button>
+                    </div>
+                    <div class="row is-full">
+                        <button id="groot-translate" class="button is-danger is-outlined button-font"><img
+                                id="groot-img" src="./assets/groot.icon.png" alt="Groot from Gaurdians of the Galaxy">
+                        </button>
+                    </div>
+                    <div class="row is-full">
+                        <button id="hodor-translate" class="button is-info is-outlined button-font"><img id="hodor-img"
+                                src="./assets/hodor.icon.png" alt="Hodor from Game of Thrones"></button>
                     </div>
                 </div>
             </div>
-        <div class ="column is-two-fifths">
-            <div class = "box">
+        </div>
+        <div class="column is-two-fifths">
+            <div class="box">
                 <h2>Translated Lyrics:</h2>
-                    <div id = "lyric-box-2" class ="box mt-3 column-tall">
-                        <p id = "retrieved-translation" class = "p-1"> </p>
-                    </div>
+                <div id="lyric-box-2" class="box mt-3 column-tall">
+                    <p id="retrieved-translation" class="p-1"> </p>
+                </div>
             </div>
         </div>
     </div>
-    <div id = "placeholder-box" class = "columns column-tall">
-
+    <div id="placeholder-box" class="columns column-tall">
     </div>
     <footer class=“footer”>
         <div class="content has-text-centered has-background-dark has-text-light p-4">
@@ -73,7 +80,8 @@
     </footer>
 
     <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
 
