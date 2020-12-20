@@ -99,7 +99,30 @@ $("#groot-translate").mouseleave(function () {
     // element.clear();
     $("#groot-img").attr('src', "./assets/groot.icon.png");
 })
-// function unhover(element) {
-//     element.setAttribute('src', './assets/groot.icon.png');
-// }
 
+$("#yoda-translate").hover(function () {
+    // element.clear();
+    $("#yoda-img").attr('src', "./assets/yoda.icon.white.png");
+})
+$("#yoda-translate").mouseleave(function () {
+    // element.clear();
+    $("#yoda-img").attr('src', "./assets/yoda.icon.png");
+})
+
+$("#pirate-translate").hover(function () {
+    // element.clear();
+    $("#pirate-img").attr('src', "./assets/pirate.icon.white.png");
+})
+$("#pirate-translate").mouseleave(function () {
+    // element.clear();
+    $("#pirate-img").attr('src', "./assets/pirate.icon.png");
+})
+
+$("#hodor-translate").hover(function () {
+    // element.clear();
+    $("#hodor-img").attr('src', "./assets/hodor.icon.white.png");
+})
+$("#hodor-translate").mouseleave(function () {
+    // element.clear();
+    $("#hodor-img").attr('src', "./assets/hodor.icon.png");
+})
