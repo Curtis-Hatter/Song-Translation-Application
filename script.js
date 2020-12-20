@@ -4,24 +4,27 @@ $("#song-button").on('click', function () {
     var url = "https://api.musixmatch.com/ws/1.1/track.search?q_track=" + userinput + "&page_size=1&page=1&s_track_rating=desc&apikey=e6524e95459dac73ce4a95bde9428b70";
     var corsfix = "https://cors-anywhere.herokuapp.com/";
     var fullurl = corsfix + url;
+    $("#song-button").addClass("is-loading")
 
-    // console.log(userinput);
+    console.log(userinput);
     $.ajax({
         url: fullurl,
         type: 'GET'
     }).then(function (response) {
         var idobject = JSON.parse("" + response + "");
-        // console.log(idobject);
+        console.log(idobject);
         var trackcheck = idobject.message.body.track_list[0].track;
         var trackid = idobject.message.body.track_list[0].track.track_id;
+        $("#song-button").removeClass("is-loading")
+        $("#lyric-box-1").removeClass("column-tall")
+        $("#placeholder-box").removeClass("column-tall")
 
-
-        // console.log(trackid);
+        console.log(trackid);
 
         var lyricurl = "https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=" + trackid + "&apikey=e6524e95459dac73ce4a95bde9428b70";
 
         var fulllyricurl = corsfix + lyricurl;
-        // console.log(fulllyricurl);
+        console.log(fulllyricurl);
 
 
         $.ajax({
@@ -29,7 +32,7 @@ $("#song-button").on('click', function () {
             type: 'GET'
         }).then(function (response) {
             var lyricobject = JSON.parse("" + response + "");
-            // console.log(lyricobject);
+            console.log(lyricobject);
 
             var lyrics = lyricobject.message.body.lyrics.lyrics_body;
 
@@ -49,13 +52,17 @@ $("#song-button").on('click', function () {
 $("#pirate-translate").on("click", function () {
     // var text = "Hello sir, my mother goes with me to the ocean.";
     var queryURL = "https://api.funtranslations.com/translate/pirate.json?text=" + text;
-    // console.log(queryURL);
+
+    //     console.log(queryURL);
+    $("#pirate-translate").addClass("is-loading")
     $.ajax({
         headers: { 'X-FunTranslations-Api-Secret': 'Ta_kah9NbJ1OJsOMUdhyBQeF' },
         url: queryURL,
         method: "GET"
     }).then(function (response) {
         // console.log(response);
+        $("#pirate-translate").removeClass("is-loading")
+        $("#lyric-box-2").removeClass("column-tall")
         $("#retrieved-translation").text(JSON.stringify(response.contents.translated));
     })
 })
@@ -63,12 +70,15 @@ $("#pirate-translate").on("click", function () {
 $("#yoda-translate").on("click", function () {
     // var text = "Hello sir, my mother goes with me to the ocean.";
     var queryURL = "https://api.funtranslations.com/translate/yoda.json?text=" + text;
+    $("#yoda-translate").addClass("is-loading")
     $.ajax({
         // headers: { 'X-FunTranslations-Api-Secret': 'Ta_kah9NbJ1OJsOMUdhyBQeF' },
         url: queryURL,
         method: "GET"
     }).then(function (response) {
         // console.log(response);
+        $("#yoda-translate").removeClass("is-loading")
+        $("#lyric-box-2").removeClass("column-tall")
         $("#retrieved-translation").text(JSON.stringify(response.contents.translated));
     })
 })
@@ -76,18 +86,21 @@ $("#yoda-translate").on("click", function () {
 $("#hodor-translate").on("click", function () {
     // var text = "Hello sir, my mother goes with me to the ocean.";
     var queryURL = "https://api.funtranslations.com/translate/hodor.json?text=" + text;
+    $("#hodor-translate").addClass("is-loading")
     $.ajax({
         // headers: { 'X-FunTranslations-Api-Secret': 'Ta_kah9NbJ1OJsOMUdhyBQeF' },
         url: queryURL,
         method: "GET"
     }).then(function (response) {
         // console.log(response);
+        $("#hodor-translate").removeClass("is-loading")
+        $("#lyric-box-2").removeClass("column-tall")
         $("#retrieved-translation").text(JSON.stringify(response.contents.translated));
     })
 })
 
 $("#groot-translate").on("click", function () {
-    // var text = "Hello sir, my mother goes with me to the ocean.";
+    $("#lyric-box-2").removeClass("column-tall")
     $("#retrieved-translation").text("I am groot!");
 })
 
