@@ -35,4 +35,4 @@ THEN my list of previously viewed songs will be deleted
 ```
 
 ### [Song Translation Application](https://curtis-hatter.github.io/Song-Translation-Application/)
-### ![Screenshot of Wireframe](Wireframe_SS.jpeg)
+### ![Screenshot of Application](Song-Translation-Application_SS.jpeg)
