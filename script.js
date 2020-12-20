@@ -1,141 +1,121 @@
-var text = $("#retrieved-lyrics").text();
+var lyricText = $("#retrieved-lyrics").text();
+
+// Retrieve user input, and return original lyrics
 $("#song-button").on('click', function () {
-    var userinput = JSON.stringify($('#song-user-input').val());
-    var url = "https://api.musixmatch.com/ws/1.1/track.search?q_track=" + userinput + "&page_size=1&page=1&s_track_rating=desc&apikey=e6524e95459dac73ce4a95bde9428b70";
-    var corsfix = "https://cors-anywhere.herokuapp.com/";
-    var fullurl = corsfix + url;
+    var userInput = JSON.stringify($('#song-user-input').val());
+    var queryURL_musix = "https://api.musixmatch.com/ws/1.1/track.search?q_track=" + userInput + "&page_size=1&page=1&s_track_rating=desc&apikey=e6524e95459dac73ce4a95bde9428b70";
+    var corsFix = "https://cors-anywhere.herokuapp.com/";
+    var fullURL = corsFix + queryURL_musix;
     $("#song-button").addClass("is-loading")
 
-    console.log(userinput);
     $.ajax({
-        url: fullurl,
+        url: fullURL,
         type: 'GET'
     }).then(function (response) {
-        var idobject = JSON.parse("" + response + "");
-        console.log(idobject);
-        var trackcheck = idobject.message.body.track_list[0].track;
-        var trackid = idobject.message.body.track_list[0].track.track_id;
+        var idObject = JSON.parse("" + response + "");
+        var trackId = idObject.message.body.track_list[0].track.track_id;
+        var queryURL_lyrics = "https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=" + trackId + "&apikey=e6524e95459dac73ce4a95bde9428b70";
+        var full_LyricURL = corsFix + queryURL_lyrics;
         $("#song-button").removeClass("is-loading")
         $("#lyric-box-1").removeClass("column-tall")
         $("#placeholder-box").removeClass("column-tall")
 
-        console.log(trackid);
-
-        var lyricurl = "https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=" + trackid + "&apikey=e6524e95459dac73ce4a95bde9428b70";
-
-        var fulllyricurl = corsfix + lyricurl;
-        console.log(fulllyricurl);
-
-
         $.ajax({
-            url: fulllyricurl,
+            url: full_LyricURL,
             type: 'GET'
         }).then(function (response) {
-            var lyricobject = JSON.parse("" + response + "");
-            console.log(lyricobject);
-
-            var lyrics = lyricobject.message.body.lyrics.lyrics_body;
-
-            // console.log(lyrics);
-
+            var lyricObject = JSON.parse("" + response + "");
+            var lyrics = lyricObject.message.body.lyrics.lyrics_body;
             $("#retrieved-lyrics").text(lyrics)
-            text = $("#retrieved-lyrics").text();
-            // console.log(text);
+            lyricText = $("#retrieved-lyrics").text();
         });
-
-
     });
 });
 
-
-
+// Translate lyrics to Pirate
 $("#pirate-translate").on("click", function () {
-    // var text = "Hello sir, my mother goes with me to the ocean.";
-    var queryURL = "https://api.funtranslations.com/translate/pirate.json?text=" + text;
-
-    //     console.log(queryURL);
+    var queryURL_pirate = "https://api.funtranslations.com/translate/pirate.json?text=" + lyricText;
     $("#pirate-translate").addClass("is-loading")
+
     $.ajax({
         headers: { 'X-FunTranslations-Api-Secret': 'Ta_kah9NbJ1OJsOMUdhyBQeF' },
-        url: queryURL,
+        url: queryURL_pirate,
         method: "GET"
     }).then(function (response) {
-        // console.log(response);
         $("#pirate-translate").removeClass("is-loading")
         $("#lyric-box-2").removeClass("column-tall")
         $("#retrieved-translation").text(JSON.stringify(response.contents.translated));
     })
 })
 
+// Translate lyrics to Yoda
 $("#yoda-translate").on("click", function () {
-    // var text = "Hello sir, my mother goes with me to the ocean.";
-    var queryURL = "https://api.funtranslations.com/translate/yoda.json?text=" + text;
+    var queryURL_yoda = "https://api.funtranslations.com/translate/yoda.json?text=" + lyricText;
     $("#yoda-translate").addClass("is-loading")
+
     $.ajax({
-        // headers: { 'X-FunTranslations-Api-Secret': 'Ta_kah9NbJ1OJsOMUdhyBQeF' },
-        url: queryURL,
+        url: queryURL_yoda,
         method: "GET"
     }).then(function (response) {
-        // console.log(response);
         $("#yoda-translate").removeClass("is-loading")
         $("#lyric-box-2").removeClass("column-tall")
         $("#retrieved-translation").text(JSON.stringify(response.contents.translated));
     })
 })
 
+// Translate lyrics to Groot
+$("#groot-translate").on("click", function () {
+    $("#lyric-box-2").removeClass("column-tall")
+    $("#retrieved-translation").text("I am groot!");
+})
+
+// Translate lyrics to Hodor
 $("#hodor-translate").on("click", function () {
-    // var text = "Hello sir, my mother goes with me to the ocean.";
-    var queryURL = "https://api.funtranslations.com/translate/hodor.json?text=" + text;
+    var queryURL_hodor = "https://api.funtranslations.com/translate/hodor.json?text=" + lyricText;
     $("#hodor-translate").addClass("is-loading")
+
     $.ajax({
-        // headers: { 'X-FunTranslations-Api-Secret': 'Ta_kah9NbJ1OJsOMUdhyBQeF' },
-        url: queryURL,
+        url: queryURL_hodor,
         method: "GET"
     }).then(function (response) {
-        // console.log(response);
         $("#hodor-translate").removeClass("is-loading")
         $("#lyric-box-2").removeClass("column-tall")
         $("#retrieved-translation").text(JSON.stringify(response.contents.translated));
     })
 })
 
-$("#groot-translate").on("click", function () {
-    $("#lyric-box-2").removeClass("column-tall")
-    $("#retrieved-translation").text("I am groot!");
-})
-
-$("#groot-translate").hover(function () {
-    // element.clear();
-    $("#groot-img").attr('src', "./assets/groot.icon.white.png");
-})
-$("#groot-translate").mouseleave(function () {
-    // element.clear();
-    $("#groot-img").attr('src', "./assets/groot.icon.png");
-})
-
-$("#yoda-translate").hover(function () {
-    // element.clear();
-    $("#yoda-img").attr('src', "./assets/yoda.icon.white.png");
-})
-$("#yoda-translate").mouseleave(function () {
-    // element.clear();
-    $("#yoda-img").attr('src', "./assets/yoda.icon.png");
-})
-
+// Change Pirate icon on hover
 $("#pirate-translate").hover(function () {
-    // element.clear();
     $("#pirate-img").attr('src', "./assets/pirate.icon.white.png");
 })
+
 $("#pirate-translate").mouseleave(function () {
-    // element.clear();
     $("#pirate-img").attr('src', "./assets/pirate.icon.png");
 })
 
+// Change Yoda icon on hover
+$("#yoda-translate").hover(function () {
+    $("#yoda-img").attr('src', "./assets/yoda.icon.white.png");
+})
+
+$("#yoda-translate").mouseleave(function () {
+    $("#yoda-img").attr('src', "./assets/yoda.icon.png");
+})
+
+// Change Groot icon on hover
+$("#groot-translate").hover(function () {
+    $("#groot-img").attr('src', "./assets/groot.icon.white.png");
+})
+
+$("#groot-translate").mouseleave(function () {
+    $("#groot-img").attr('src', "./assets/groot.icon.png");
+})
+
+// Change Hodor icon on hover
 $("#hodor-translate").hover(function () {
-    // element.clear();
     $("#hodor-img").attr('src', "./assets/hodor.icon.white.png");
 })
+
 $("#hodor-translate").mouseleave(function () {
-    // element.clear();
     $("#hodor-img").attr('src', "./assets/hodor.icon.png");
 })
