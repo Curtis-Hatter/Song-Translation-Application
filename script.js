@@ -14,7 +14,8 @@ $("#song-button").on('click', function () {
     }).then(function (response) {
         var idObject = JSON.parse("" + response + "");
         var trackId = idObject.message.body.track_list[0].track.track_id;
-        var queryURL_lyrics = "https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=" + trackId + "&apikey=e6524e95459dac73ce4a95bde9428b70";
+        var apiKey = "e6524e95459dac73ce4a95bde9428b70"
+        var queryURL_lyrics = "https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=" + trackId + "&apikey=" + apiKey;
         var full_LyricURL = corsFix + queryURL_lyrics;
         $("#song-button").removeClass("is-loading")
         $("#lyric-box-1").removeClass("column-tall")
