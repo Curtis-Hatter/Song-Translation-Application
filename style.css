@@ -16,13 +16,20 @@ h2 {
     font-size: 20px;
 }
 
+.bottom-curve {
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
 img {
     max-width: 100%;
     max-height: 150%;
 }
 
 .column-tall {
-    height: 320px;
+    height: 280px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -40,6 +47,9 @@ img {
 }
 
 @media only screen and (max-width: 600px) {
+    .column-tall {
+        height: 60px;
+    }
     .centered {
         margin-left: 85px;
     }

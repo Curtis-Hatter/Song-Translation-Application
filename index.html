@@ -11,35 +11,38 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="has-background-light">
     <div class="hero is-dark">
         <div class="has-text-white p-3 m-3 level">
             <h1 class="ml-2 mb-2">Lyric Translator</h1>
             <div class="field has-addons mb-2">
                 <div class="control centered">
-                    <input id="song-user-input" class="input is-medium" type="text" placeholder="Enter a Song">
+                    <input id="song-user-input" class="input is-medium button-font" type="text" placeholder="Enter a Song">
                 </div>
                 <div class="control">
-                    <a class="button has-background-grey-light is-medium" id="song-button"><i
+                    <a class="button has-background-grey-light is-medium" id="search-button"><i
                             class="fas fa-search"></i></a>
                 </div>
             </div>
         </div>
     </div>
     </div>
-    <div class="box">
-        <div class="columns">
-            <div id="song-button-1" class="column m-1 is-one-fourth has-text-centered">
-                <button> Song 1 </button>
+    <div class="box has-background-grey-light bottom-curve">
+        <div id = "song-buttons" class="columns">
+            <div class="column mx-1 is-one-fifth has-text-centered">
+                <button id="song-button-1" class = "song-button button is-dark button-font"> Song 1 </button>
             </div>
-            <div id="song-button-2" class="column m-1 is-one-fourth has-text-centered">
-                <button> Song 2 </button>
+            <div class="column mr-1 is-one-fifth has-text-centered">
+                <button id="song-button-2" class = "song-button button is-dark button-font"> Song 2 </button>
             </div>
-            <div id="song-button-3" class="column m-1 is-one-fourth has-text-centered">
-                <button> Song 3 </button>
+            <div class="column mr-1 is-one-fifth has-text-centered">
+                <button id="song-button-3" class = "song-button button is-dark button-font"> Song 3 </button>
             </div>
-            <div id="song-button-4" class="column m-1 is-one-fourth has-text-centered">
-                <button> Song 4 </button>
+            <div class="column mr-1 is-one-fifth has-text-centered">
+                <button id="song-button-4" class = "song-button button is-dark button-font"> Song 4 </button>
+            </div>
+            <div class="column mr-1 is-one-fifth has-text-centered">
+                <button id="clear-button" class = "button is-light has-text-dark button-font"> Clear Memory </button>
             </div>
         </div>
     </div>
@@ -57,7 +60,7 @@
                 <h2 class="mb-4">Choose a Translation Language:</h2>
                 <div class="rows">
                     <div class="row is-full mb-2">
-                        <button id="pirate-translate" class="button is-large is-black is-outlined button-font"><img
+                        <button id="pirate-translate" class="button is-large is-dark is-outlined button-font"><img
                                 id="pirate-img" src="./assets/pirate.icon.png" alt="Pirate Ship"></button>
                     </div>
                     <div class="row is-full mb-2">

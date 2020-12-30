@@ -1,12 +1,45 @@
 var lyricText = $("#retrieved-lyrics").text();
+var topSongsArr = [
+    "Smells Like Teen Spirit",
+    "Hey Jude",
+    "Billie Jean",
+    "Bohemian Rhapsody",
+    "Sweet Caroline",
+    "Hotel California",
+    "Over the Rainbow",
+    "Life on Mars",
+    "Dancing Queen",
+    "I Will Always Love You"
+]
+var previousSongs = localStorage.getItem("song-names", previousSongs)
+previousSongs = previousSongs ? previousSongs.split(',') : [];
+
+function showSuggestedSongs () {
+    for (var i=1; i < 5; i++) {
+        var randomNumber = Math.floor((Math.random()*topSongsArr.length))
+        var randomSong = topSongsArr[randomNumber]
+        topSongsArr.splice(randomNumber, 1)
+        $(`#song-button-${i}`).text(randomSong)
+        $(`#song-button-${i}`).attr("data-song", `${randomSong}`)
+    }
+}
+showSuggestedSongs ()
+
+function showPreviousSongs () {
+    for (var i=0; i<previousSongs.length; i++) {
+        var songName = JSON.parse(previousSongs[i])
+        $(`#song-button-${i+1}`).text(songName)
+        $(`#song-button-${i+1}`).attr("data-song", `${songName}`)
+    }
+}
+showPreviousSongs()
 
 // Retrieve user input, and return original lyrics
-$("#song-button").on('click', function () {
-    var userInput = JSON.stringify($('#song-user-input').val());
-    var queryURL_musix = "https://api.musixmatch.com/ws/1.1/track.search?q_track=" + userInput + "&page_size=1&page=1&s_track_rating=desc&apikey=e6524e95459dac73ce4a95bde9428b70";
+function showSongLyrics () {
+    var currentSong = localStorage.getItem("current-song", currentSong)
+    var queryURL_musix = "https://api.musixmatch.com/ws/1.1/track.search?q_track=" + currentSong + "&page_size=1&page=1&s_track_rating=desc&apikey=e6524e95459dac73ce4a95bde9428b70";
     var corsFix = "https://cors-anywhere.herokuapp.com/";
     var fullURL = corsFix + queryURL_musix;
-    $("#song-button").addClass("is-loading")
 
     $.ajax({
         url: fullURL,
@@ -17,9 +50,6 @@ $("#song-button").on('click', function () {
         var apiKey = "e6524e95459dac73ce4a95bde9428b70"
         var queryURL_lyrics = "https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=" + trackId + "&apikey=" + apiKey;
         var full_LyricURL = corsFix + queryURL_lyrics;
-        $("#song-button").removeClass("is-loading")
-        $("#lyric-box-1").removeClass("column-tall")
-        $("#placeholder-box").removeClass("column-tall")
 
         $.ajax({
             url: full_LyricURL,
@@ -27,11 +57,15 @@ $("#song-button").on('click', function () {
         }).then(function (response) {
             var lyricObject = JSON.parse("" + response + "");
             var lyrics = lyricObject.message.body.lyrics.lyrics_body;
+            $("#search-button").removeClass("is-loading")
+            $(".song-button").removeClass("is-loading")
+            $("#lyric-box-1").removeClass("column-tall")
+            $("#placeholder-box").removeClass("column-tall")
             $("#retrieved-lyrics").text(lyrics)
             lyricText = $("#retrieved-lyrics").text();
         });
     });
-});
+};
 
 // Translate lyrics to Pirate
 $("#pirate-translate").on("click", function () {
@@ -84,6 +118,33 @@ $("#hodor-translate").on("click", function () {
         $("#retrieved-translation").text(JSON.stringify(response.contents.translated));
     })
 })
+
+// Get song title from search bar
+$("#search-button").click(function () {
+    $("#search-button").addClass("is-loading")
+    var currentSong = JSON.stringify($('#song-user-input').val());
+    $('#song-user-input').val("")
+    previousSongs.unshift(currentSong)
+    localStorage.setItem("song-names", previousSongs)
+    localStorage.setItem ("current-song", currentSong)
+    showSongLyrics()
+    showPreviousSongs()
+})
+
+// Get song title from buttons
+$(".song-button").click(function () {
+    var currentSong = $(this).attr("data-song")
+    console.log(currentSong)
+    $(this).addClass("is-loading")
+    localStorage.setItem("current-song", currentSong)
+    showSongLyrics()
+})
+
+// Clear local storage
+$("#clear-button").click(function(){
+    localStorage.clear()
+    location.reload()
+});
 
 // Change Pirate icon on hover
 $("#pirate-translate").hover(function () {
