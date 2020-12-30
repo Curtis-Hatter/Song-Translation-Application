@@ -2,26 +2,26 @@ var listofSongs = [
     song1 = {
         title: "3005",
         lyrics: "Over the rainbow",
-        translationsChoice: "pirate",
-        translatedLyrics: "O'er der reinbew"
+        // translationsChoice: "pirate",
+        // translatedLyrics: "O'er der reinbew"
     },
     song2 = {
         title: "Fireworks",
         lyrics: "Over the rainbow",
-        translationsChoice: "pirate",
-        translatedLyrics: "O'er der reinbew"
+        // translationsChoice: "pirate",
+        // translatedLyrics: "O'er der reinbew"
     },
     song3 = {
         title: "Everlong",
         lyrics: "Over the rainbow",
-        translationsChoice: "groot",
-        translatedLyrics: "O'er der reinbew"
+        // translationsChoice: "groot",
+        // translatedLyrics: "O'er der reinbew"
     },
     song4 = {
         title: "It Wasn't Me",
         lyrics: "Over the rainbow",
-        translationsChoice: "groot",
-        translatedLyrics: "O'er der reinbew"
+        // translationsChoice: "groot",
+        // translatedLyrics: "O'er der reinbew"
     }
 ];
 if (localStorage.getItem("listofSongs") !== null) {
