@@ -149,7 +149,7 @@ $("#search-button").click(function () {
 // Get song title from buttons
 $(".song-button").click(function () {
     var currentSong = $(this).attr("data-song")
-    console.log(currentSong)
+    // console.log(currentSong)
     $(this).addClass("is-loading")
     localStorage.setItem("current-song", currentSong)
     showSongLyrics()
