@@ -69,7 +69,7 @@ function showSongLyrics() {
 
 // Translate lyrics to Pirate
 $("#pirate-translate").on("click", function () {
-    var queryURL_pirate = "https://api.funtranslations.com/translate/pirate.json?text=" + userSong.lyrics;
+    var queryURL_pirate = "https://api.funtranslations.com/translate/pirate.json?text=" + lyricText;
     $("#pirate-translate").addClass("is-loading")
 
     $.ajax({
@@ -79,14 +79,13 @@ $("#pirate-translate").on("click", function () {
     }).then(function (response) {
         $("#pirate-translate").removeClass("is-loading")
         $("#lyric-box-2").removeClass("column-tall")
-        userSong.translatedLyrics = JSON.stringify(response.contents.translated)
-        $("#retrieved-translation").text(userSong.translatedLyrics);
+        $("#retrieved-translation").text(JSON.stringify(response.contents.translated));
     })
 })
 
 // Translate lyrics to Yoda
 $("#yoda-translate").on("click", function () {
-    var queryURL_yoda = "https://api.funtranslations.com/translate/yoda.json?text=" + userSong.lyrics;
+    var queryURL_yoda = "https://api.funtranslations.com/translate/yoda.json?text=" + lyricText;
     $("#yoda-translate").addClass("is-loading")
 
     $.ajax({
@@ -107,7 +106,7 @@ $("#groot-translate").on("click", function () {
 
 // Translate lyrics to Hodor
 $("#hodor-translate").on("click", function () {
-    var queryURL_hodor = "https://api.funtranslations.com/translate/hodor.json?text=" + userSong.lyrics;
+    var queryURL_hodor = "https://api.funtranslations.com/translate/hodor.json?text=" + lyricText;
     $("#hodor-translate").addClass("is-loading")
 
     $.ajax({
@@ -181,21 +180,4 @@ $("#hodor-translate").hover(function () {
 
 $("#hodor-translate").mouseleave(function () {
     $("#hodor-img").attr('src', "./assets/hodor.icon.png");
-})
-
-$("#song-button-1").on("click", function () {
-    $("#retrieved-lyrics").text(listofSongs[0].lyrics);
-    $("#retrieved-translation").text(listofSongs[0].translatedLyrics);
-})
-$("#song-button-2").on("click", function () {
-    $("#retrieved-lyrics").text(listofSongs[1].lyrics);
-    $("#retrieved-translation").text(listofSongs[1].translatedLyrics);
-})
-$("#song-button-3").on("click", function () {
-    $("#retrieved-lyrics").text(listofSongs[2].lyrics);
-    $("#retrieved-translation").text(listofSongs[2].translatedLyrics);
-})
-$("#song-button-4").on("click", function () {
-    $("#retrieved-lyrics").text(listofSongs[3].lyrics);
-    $("#retrieved-translation").text(listofSongs[3].translatedLyrics);
 })
