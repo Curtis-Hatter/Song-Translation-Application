@@ -86,7 +86,7 @@ $("#pirate-translate").on("click", function () {
         },
         error: function () {
             $("#pirate-translate").removeClass("is-loading")
-            alert("Darn those API's! Try again in an hour.");
+            $("#retrieved-translation").text("Darn those API's! Try again in an hour.");
         }
     });
 })
@@ -106,7 +106,7 @@ $("#yoda-translate").on("click", function () {
         },
         error: function () {
             $("#yoda-translate").removeClass("is-loading")
-            alert("Darn those API's! Try again in an hour.");
+            $("#retrieved-translation").text("Darn those API's! Try again in an hour.");
         }
     });
 })
@@ -132,7 +132,7 @@ $("#hodor-translate").on("click", function () {
         },
         error: function () {
             $("#hodor-translate").removeClass("is-loading")
-            alert("Darn those API's! Try again in an hour.");
+            $("#retrieved-translation").text("Darn those API's! Try again in an hour.");
         }
     });
 })
