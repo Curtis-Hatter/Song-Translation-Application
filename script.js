@@ -75,12 +75,17 @@ $("#pirate-translate").on("click", function () {
     $.ajax({
         headers: { 'X-FunTranslations-Api-Secret': 'Ta_kah9NbJ1OJsOMUdhyBQeF' },
         url: queryURL_pirate,
-        method: "GET"
-    }).then(function (response) {
-        $("#pirate-translate").removeClass("is-loading")
-        $("#lyric-box-2").removeClass("column-tall")
-        $("#retrieved-translation").text(JSON.stringify(response.contents.translated));
-    })
+        method: "GET",
+        success: function (response) {
+            $("#pirate-translate").removeClass("is-loading")
+            $("#lyric-box-2").removeClass("column-tall")
+            $("#retrieved-translation").text(JSON.stringify(response.contents.translated));
+        },
+        error: function () {
+            $("#pirate-translate").removeClass("is-loading")
+            alert("Darn those API's! Try again in an hour.");
+        }
+    });
 })
 
 // Translate lyrics to Yoda
@@ -90,12 +95,17 @@ $("#yoda-translate").on("click", function () {
 
     $.ajax({
         url: queryURL_yoda,
-        method: "GET"
-    }).then(function (response) {
-        $("#yoda-translate").removeClass("is-loading")
-        $("#lyric-box-2").removeClass("column-tall")
-        $("#retrieved-translation").text(JSON.stringify(response.contents.translated));
-    })
+        method: "GET",
+        success: function (response) {
+            $("#yoda-translate").removeClass("is-loading")
+            $("#lyric-box-2").removeClass("column-tall")
+            $("#retrieved-translation").text(JSON.stringify(response.contents.translated));
+        },
+        error: function () {
+            $("#yoda-translate").removeClass("is-loading")
+            alert("Darn those API's! Try again in an hour.");
+        }
+    });
 })
 
 // Translate lyrics to Groot
@@ -111,12 +121,17 @@ $("#hodor-translate").on("click", function () {
 
     $.ajax({
         url: queryURL_hodor,
-        method: "GET"
-    }).then(function (response) {
-        $("#hodor-translate").removeClass("is-loading")
-        $("#lyric-box-2").removeClass("column-tall")
-        $("#retrieved-translation").text(JSON.stringify(response.contents.translated));
-    })
+        method: "GET",
+        success: function (response) {
+            $("#hodor-translate").removeClass("is-loading");
+            $("#lyric-box-2").removeClass("column-tall");
+            $("#retrieved-translation").text(JSON.stringify(response.contents.translated));
+        },
+        error: function () {
+            $("#hodor-translate").removeClass("is-loading")
+            alert("Darn those API's! Try again in an hour.");
+        }
+    });
 })
 
 // Get song title from search bar
