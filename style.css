@@ -32,6 +32,10 @@ img {
     height: 280px;
 }
 
+.column-small {
+    height: 150px;
+}
+
 @media only screen and (max-width: 768px) {
     .column-tall {
         height: 100px;
