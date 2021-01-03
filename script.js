@@ -61,7 +61,10 @@ function showSongLyrics () {
             $(".song-button").removeClass("is-loading")
             $("#lyric-box-1").removeClass("column-tall")
             $("#placeholder-box").removeClass("column-tall")
+            $("#placeholder-box").addClass("column-small")
             $("#retrieved-lyrics").text(lyrics)
+            $("#lyric-box-2").addClass("column-tall")
+            $("#retrieved-translation").text(" ")
             lyricText = $("#retrieved-lyrics").text();
         });
     });
@@ -134,6 +137,7 @@ $("#search-button").click(function () {
 // Get song title from buttons
 $(".song-button").click(function () {
     var currentSong = $(this).attr("data-song")
+
     console.log(currentSong)
     $(this).addClass("is-loading")
     localStorage.setItem("current-song", currentSong)
