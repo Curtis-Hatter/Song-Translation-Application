@@ -32,6 +32,10 @@ img {
     height: 280px;
 }
 
+.column-medium {
+    height: 202px;
+}
+
 .column-small {
     height: 150px;
 }
@@ -39,6 +43,9 @@ img {
 @media only screen and (max-width: 768px) {
     .column-tall {
         height: 100px;
+    }
+    .column-medium {
+        height: 50px;
     }
     body {
         font-family: 'Oswald', sans-serif;
@@ -53,6 +60,9 @@ img {
 @media only screen and (max-width: 600px) {
     .column-tall {
         height: 60px;
+    }
+    .column-medium {
+        height: 30px;
     }
     .centered {
         margin-left: 85px;

@@ -20,16 +20,16 @@ function showSuggestedSongs() {
         var randomSong = topSongsArr[randomNumber]
         topSongsArr.splice(randomNumber, 1)
         $(`#song-button-${i}`).text(randomSong)
-        $(`#song-button-${i}`).attr("data-song", `${randomSong}`)
+        $(`#song-button-${i}`).attr("data-song", randomSong)
     }
 }
 showSuggestedSongs()
 
 function showPreviousSongs() {
     for (var i = 0; i < previousSongs.length; i++) {
-        var songName = JSON.parse(previousSongs[i])
+        var songName = previousSongs[i]
         $(`#song-button-${i + 1}`).text(songName)
-        $(`#song-button-${i + 1}`).attr("data-song", `${songName}`)
+        $(`#song-button-${i + 1}`).attr("data-song", songName)
     }
 }
 showPreviousSongs()
@@ -64,11 +64,11 @@ function showSongLyrics() {
             var lyrics = lyricObject.message.body.lyrics.lyrics_body;
             $("#search-button").removeClass("is-loading")
             $(".song-button").removeClass("is-loading")
-            $("#lyric-box-1").removeClass("column-tall")
             $("#placeholder-box").removeClass("column-tall")
-            $("#placeholder-box").addClass("column-small")
+            $("#placeholder-box").addClass("column-medium")
             $("#retrieved-lyrics").text(lyrics)
             lyricText = $("#retrieved-lyrics").text();
+            $("#lyric-box-1").removeClass("column-tall")
         });
     });
 };
@@ -151,7 +151,7 @@ $("#hodor-translate").on("click", function () {
 // Get song title from search bar
 $("#search-button").click(function () {
     $("#search-button").addClass("is-loading")
-    var currentSong = JSON.stringify($('#song-user-input').val());
+    var currentSong = $('#song-user-input').val()
     $('#song-user-input').val("")
     previousSongs.unshift(currentSong)
     localStorage.setItem("song-names", previousSongs)
