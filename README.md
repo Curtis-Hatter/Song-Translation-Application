@@ -6,9 +6,9 @@
 #### This Song Translation Application will utilize API's in order to provide the user with a fun and informative musical experience. The user experience within the browser will be enhanced by stylish CSS (powered by [Bulma](https://bulma.io/)), a user friendly HTML layout, and Javascript to dynamically update these elements. The decumentation of each API can be found using the links below:
 
 ##### [Provide Lyrics](https://developer.musixmatch.com/)
-##### [Pirate Translator](https://api.funtranslations.com/translate/pirate)
-##### [Yoda Translator](https://api.funtranslations.com/translate/yoda)
-##### [Hodor Translator](https://api.funtranslations.com/translate/hodor)
+##### [Pirate Translator](https://funtranslations.com/api/pirate)
+##### [Yoda Translator](https://funtranslations.com/api/yoda)
+##### [Hodor Translator](https://funtranslations.com/api/hodor)
 
 ## User Story
 
