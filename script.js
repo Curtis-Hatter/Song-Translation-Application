@@ -20,16 +20,16 @@ function showSuggestedSongs() {
         var randomSong = topSongsArr[randomNumber]
         topSongsArr.splice(randomNumber, 1)
         $(`#song-button-${i}`).text(randomSong)
-        $(`#song-button-${i}`).attr("data-song", `${randomSong}`)
+        $(`#song-button-${i}`).attr("data-song", randomSong)
     }
 }
 showSuggestedSongs()
 
 function showPreviousSongs() {
     for (var i = 0; i < previousSongs.length; i++) {
-        var songName = JSON.parse(previousSongs[i])
+        var songName = previousSongs[i]
         $(`#song-button-${i + 1}`).text(songName)
-        $(`#song-button-${i + 1}`).attr("data-song", `${songName}`)
+        $(`#song-button-${i + 1}`).attr("data-song", songName)
     }
 }
 showPreviousSongs()
@@ -40,6 +40,11 @@ function showSongLyrics() {
     var queryURL_musix = "https://api.musixmatch.com/ws/1.1/track.search?q_track=" + currentSong + "&page_size=1&page=1&s_track_rating=desc&apikey=e6524e95459dac73ce4a95bde9428b70";
     var corsFix = "https://cors-anywhere.herokuapp.com/";
     var fullURL = corsFix + queryURL_musix;
+    $("#retrieved-lyrics").text(" ")
+    $("#lyric-box-1").addClass("column-tall")
+    $("#translation-title").text(`Translated Lyrics:`)
+    $("#retrieved-translation").text(" ")
+    $("#lyric-box-2").addClass("column-tall")
 
     $.ajax({
         url: fullURL,
@@ -59,13 +64,11 @@ function showSongLyrics() {
             var lyrics = lyricObject.message.body.lyrics.lyrics_body;
             $("#search-button").removeClass("is-loading")
             $(".song-button").removeClass("is-loading")
-            $("#lyric-box-1").removeClass("column-tall")
             $("#placeholder-box").removeClass("column-tall")
-            $("#placeholder-box").addClass("column-small")
+            $("#placeholder-box").addClass("column-medium")
             $("#retrieved-lyrics").text(lyrics)
-            $("#lyric-box-2").addClass("column-tall")
-            $("#retrieved-translation").text(" ")
             lyricText = $("#retrieved-lyrics").text();
+            $("#lyric-box-1").removeClass("column-tall")
         });
     });
 };
@@ -74,6 +77,8 @@ function showSongLyrics() {
 $("#pirate-translate").on("click", function () {
     var queryURL_pirate = "https://api.funtranslations.com/translate/pirate.json?text=" + lyricText;
     $("#pirate-translate").addClass("is-loading")
+    var currentSong = localStorage.getItem("current-song", currentSong)
+    $("#translation-title").text(`"${currentSong}" Pirate Lyrics:`)
 
     $.ajax({
         headers: { 'X-FunTranslations-Api-Secret': 'Ta_kah9NbJ1OJsOMUdhyBQeF' },
@@ -95,6 +100,8 @@ $("#pirate-translate").on("click", function () {
 $("#yoda-translate").on("click", function () {
     var queryURL_yoda = "https://api.funtranslations.com/translate/yoda.json?text=" + lyricText;
     $("#yoda-translate").addClass("is-loading")
+    var currentSong = localStorage.getItem("current-song", currentSong)
+    $("#translation-title").text(`"${currentSong}" Yoda Lyrics:`)
 
     $.ajax({
         url: queryURL_yoda,
@@ -106,7 +113,7 @@ $("#yoda-translate").on("click", function () {
         },
         error: function () {
             $("#yoda-translate").removeClass("is-loading")
-            $("#retrieved-translation").text("Darn those API's! Try again in an hour.");
+            $("#retrieved-translation").text("Hrrrm, the force is weak with you, young API! Again in an hour, try you will.");
         }
     });
 })
@@ -114,6 +121,8 @@ $("#yoda-translate").on("click", function () {
 // Translate lyrics to Groot
 $("#groot-translate").on("click", function () {
     $("#lyric-box-2").removeClass("column-tall")
+    var currentSong = localStorage.getItem("current-song", currentSong)
+    $("#translation-title").text(`"${currentSong}" Groot Lyrics:`)
     $("#retrieved-translation").text("I am groot!");
 })
 
@@ -121,6 +130,8 @@ $("#groot-translate").on("click", function () {
 $("#hodor-translate").on("click", function () {
     var queryURL_hodor = "https://api.funtranslations.com/translate/hodor.json?text=" + lyricText;
     $("#hodor-translate").addClass("is-loading")
+    var currentSong = localStorage.getItem("current-song", currentSong)
+    $("#translation-title").text(`"${currentSong}" Hodor Lyrics:`)
 
     $.ajax({
         url: queryURL_hodor,
@@ -132,7 +143,7 @@ $("#hodor-translate").on("click", function () {
         },
         error: function () {
             $("#hodor-translate").removeClass("is-loading")
-            $("#retrieved-translation").text("Darn those API's! Try again in an hour.");
+            $("#retrieved-translation").text("Hodor hodor API's! Hodor hodor hodor hodor hodor. (Darn those API's! Try again in an hour.)");
         }
     });
 })
@@ -140,11 +151,12 @@ $("#hodor-translate").on("click", function () {
 // Get song title from search bar
 $("#search-button").click(function () {
     $("#search-button").addClass("is-loading")
-    var currentSong = JSON.stringify($('#song-user-input').val());
+    var currentSong = $('#song-user-input').val()
     $('#song-user-input').val("")
     previousSongs.unshift(currentSong)
     localStorage.setItem("song-names", previousSongs)
     localStorage.setItem("current-song", currentSong)
+    $("#original-title").text(`"${currentSong}" Lyrics:`)
     showSongLyrics()
     showPreviousSongs()
 })
@@ -152,9 +164,9 @@ $("#search-button").click(function () {
 // Get song title from buttons
 $(".song-button").click(function () {
     var currentSong = $(this).attr("data-song")
-    // console.log(currentSong)
     $(this).addClass("is-loading")
     localStorage.setItem("current-song", currentSong)
+    $("#original-title").text(`"${currentSong}" Lyrics:`)
     showSongLyrics()
 })
 

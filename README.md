@@ -1,14 +1,14 @@
 # Song Translation Application
-### This is the repository for Project 1.
-#### Group members: Curtis, Mark, Megan, Michaela & Tyler
+
+#### Contributors: Curtis, Mark, Megan, Michaela & Tyler
 
 ## Overview
-#### This Song Translation Application will utilize API's in order to provide the user with a fun and informative musical experience. The user experience within the browser will be enhanced by stylish CSS (powered by [Bulma](https://bulma.io/)), a user friendly HTML layout, and Javascript to dynamically update these elements. The decumentation of each API can be found using the links below:
+#### This Song Translation Application will utilize API's in order to provide the user with a fun and informative musical experience. The user experience within the browser will be enhanced by stylish CSS (powered by [Bulma](https://bulma.io/)), a user friendly HTML layout, and Javascript to dynamically update these elements. The documentation of each API can be found using the links below:
 
 ##### [Provide Lyrics](https://developer.musixmatch.com/)
-##### [Pirate Translator](https://rapidapi.com/orthosie/api/pirate-translator)
-##### [Yoda Translator](https://rapidapi.com/orthosie/api/yoda-translator)
-##### [Groot Translator](https://rapidapi.com/RapidAlex/api/i-am-groot-i-am-groot)
+##### [Pirate Translator](https://funtranslations.com/api/pirate)
+##### [Yoda Translator](https://funtranslations.com/api/yoda)
+##### [Hodor Translator](https://funtranslations.com/api/hodor)
 
 ## User Story
 
@@ -25,14 +25,17 @@ GIVEN this Song Translator
 WHEN I select a song or enter a title of my own
 THEN the lyrics of the song will be presented to me
 WHEN I click a button selecting a fun language
-THEN the translation will replace the original lyrics
-WHEN I choose two different languages
-THEN I can view the translations side by side
-WHEN I choose a new song
-THEN it will be saved to local storage to view it later
+THEN the translation will appear next to the original lyrics
+WHEN I enter a new song in the search bar
+THEN the title will be saved to local storage to review later
+WHEN I refresh the page
+THEN four saved and/or suggested songs will be displayed on buttons
+WHEN I click on a song button
+THEN the lyrics to the song will be shown
 WHEN I click the "clear songs" button
 THEN my list of previously viewed songs will be deleted
 ```
-
-### [Song Translation Application](https://curtis-hatter.github.io/Song-Translation-Application/)
+### Link to deployed site: [Song Translation Application](https://curtis-hatter.github.io/Song-Translation-Application/)
 ### ![Screenshot of Application](./assets/Song-Translation-Application_SS1.jpeg)
+### ![Screenshot of Translation Using Song Buttons](./assets/Song-Translation-Application_SS2.jpeg)
+### ![Screenshot of Translation Using Search Bar, Translation Error](./assets/Song-Translation-Application_SS3.jpeg)
